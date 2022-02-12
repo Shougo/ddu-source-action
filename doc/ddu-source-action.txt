@@ -1,0 +1,61 @@
+*ddu-source-action.txt*	action source for ddu.vim
+
+Author: Shougo <Shougo.Matsu at gmail.com>
+License: MIT license
+
+CONTENTS					*ddu-source-action-contents*
+
+Introduction		|ddu-source-action-introduction|
+Install			|ddu-source-action-install|
+Examples		|ddu-source-action-examples|
+Params			|ddu-source-action-params|
+
+
+==============================================================================
+INTRODUCTION				*ddu-source-action-introduction*
+
+This source collects actions from items.
+
+Note: It must be called from UI plugin.
+
+
+==============================================================================
+INSTALL						*ddu-source-action-install*
+
+Please install both "ddu.vim" and "denops.vim".
+
+https://github.com/Shougo/ddu.vim
+https://github.com/vim-denops/denops.vim
+
+
+==============================================================================
+EXAMPLES					*ddu-source-action-examples*
+>
+	call ddu#custom#patch_global({
+	    \   'kindOptions': {
+	    \     'action': {
+	    \       'defaultAction': 'do',
+	    \     },
+	    \   }
+	    \ })
+
+==============================================================================
+PARAMS						*ddu-source-action-params*
+
+				    	*ddu-source-action-param-actions*
+actions		(string[])
+		Actions names list.
+
+		Default: []
+
+name		(string)
+		Current ddu name.
+
+items		(DduItem[])
+		Items list.
+
+		Default: []
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
