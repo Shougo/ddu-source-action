@@ -16,7 +16,11 @@ type Params = Record<never, never>;
 
 export class Kind extends BaseKind<Params> {
   actions: Actions<Params> = {
-    do: async (args: { denops: Denops; items: DduItem[] }) => {
+    do: async (args: {
+      denops: Denops;
+      items: DduItem[],
+      actionParams: unknown
+    }) => {
       const name = (args.items[0].action as ActionData).name;
 
       await args.denops.call("ddu#pop", name);
@@ -31,6 +35,7 @@ export class Kind extends BaseKind<Params> {
           {
             name: action.action,
             items: action.items,
+            params: args.actionParams,
           },
         );
       }

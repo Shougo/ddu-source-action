@@ -9,6 +9,7 @@ Introduction		|ddu-source-action-introduction|
 Install			|ddu-source-action-install|
 Examples		|ddu-source-action-examples|
 Params			|ddu-source-action-params|
+Actions			|ddu-kind-action-actions|
 
 
 ==============================================================================
@@ -56,6 +57,17 @@ items		(DduItem[])
 		Items list.
 
 		Default: []
+
+
+==============================================================================
+ACTIONS						*ddu-kind-action-actions*
+
+						*ddu-kind-action-action-do*
+do
+		do the action.
+
+		params:
+			action params.
 
 
 ==============================================================================
