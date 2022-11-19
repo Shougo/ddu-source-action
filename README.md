@@ -20,10 +20,10 @@ https://github.com/Shougo/ddu.vim
 ## Configuration
 
 ```vim
-call ddu#custom#patch_global({
-    \   'kindOptions': {
-    \     'action': {
-    \       'defaultAction': 'do',
+call ddu#custom#patch_global(#{
+    \   kindOptions: #{
+    \     action: #{
+    \       defaultAction: 'do',
     \     },
     \   }
     \ })

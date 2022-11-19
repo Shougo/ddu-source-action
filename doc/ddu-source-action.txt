@@ -33,10 +33,10 @@ https://github.com/vim-denops/denops.vim
 ==============================================================================
 EXAMPLES					*ddu-source-action-examples*
 >
-	call ddu#custom#patch_global({
-	    \   'kindOptions': {
-	    \     'action': {
-	    \       'defaultAction': 'do',
+	call ddu#custom#patch_global(#{
+	    \   kindOptions: #{
+	    \     action: #{
+	    \       defaultAction: 'do',
 	    \     },
 	    \   }
 	    \ })
