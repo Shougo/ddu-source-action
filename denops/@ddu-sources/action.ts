@@ -16,12 +16,13 @@ type Params = {
 export class Source extends BaseSource<Params> {
   kind = "action";
 
-  gather(args: {
+  override gather(args: {
     denops: Denops;
     context: Context;
     sourceParams: Params;
   }): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
+      // deno-lint-ignore require-await
       async start(controller) {
         controller.enqueue(args.sourceParams.actions.map((action) => {
           return {
@@ -38,7 +39,7 @@ export class Source extends BaseSource<Params> {
     });
   }
 
-  params(): Params {
+  override params(): Params {
     return {
       actions: [],
       name: "default",

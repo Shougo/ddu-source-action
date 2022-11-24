@@ -15,7 +15,7 @@ export type ActionData = {
 type Params = Record<never, never>;
 
 export class Kind extends BaseKind<Params> {
-  actions: Actions<Params> = {
+  override actions: Actions<Params> = {
     do: async (args: {
       denops: Denops;
       items: DduItem[],
@@ -44,7 +44,7 @@ export class Kind extends BaseKind<Params> {
     },
   };
 
-  params(): Params {
+  override params(): Params {
     return {};
   }
 }
