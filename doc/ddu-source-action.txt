@@ -8,8 +8,10 @@ CONTENTS					*ddu-source-action-contents*
 Introduction		|ddu-source-action-introduction|
 Install			|ddu-source-action-install|
 Examples		|ddu-source-action-examples|
-Params			|ddu-source-action-params|
-Actions			|ddu-kind-action-actions|
+Source Params		|ddu-source-action-params|
+Kind Actions		|ddu-kind-action-actions|
+Kind Params		|ddu-kind-action-params|
+FAQ			|ddu-source-action-faq|
 
 
 ==============================================================================
@@ -43,7 +45,7 @@ EXAMPLES					*ddu-source-action-examples*
 	    \ })
 
 ==============================================================================
-PARAMS						*ddu-source-action-params*
+SOURCE PARAMS					*ddu-source-action-params*
 
 				    	*ddu-source-action-param-actions*
 actions		(string[])
@@ -61,7 +63,7 @@ items		(DduItem[])
 
 
 ==============================================================================
-ACTIONS						*ddu-kind-action-actions*
+KIND ACTIONS					*ddu-kind-action-actions*
 
 						*ddu-kind-action-action-do*
 do
@@ -69,6 +71,32 @@ do
 
 		params:
 			action params.
+
+
+==============================================================================
+KIND PARAMS					*ddu-kind-action-params*
+
+					*ddu-kind-file-action-quit*
+quit	(boolean)
+		If it is true, quit the current ddu UI after fire actions.
+
+		Default: v:false
+
+
+==============================================================================
+FAQ						*ddu-source-action-faq*
+
+Q: I want to quit ddu after fire actions.
+
+A: Please enable |ddu-kind-file-action-quit|. >
+
+	call ddu#custom#patch_global(#{
+	\   kindParams: #{
+	\     action: #{
+	\       quit: v:true,
+	\     },
+	\   },
+	\ })
 
 
 ==============================================================================
