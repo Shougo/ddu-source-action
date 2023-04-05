@@ -3,8 +3,8 @@ import {
   ActionFlags,
   BaseKind,
   DduItem,
-} from "https://deno.land/x/ddu_vim@v2.2.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v2.2.0/deps.ts";
+} from "https://deno.land/x/ddu_vim@v2.7.0/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v2.7.0/deps.ts";
 
 export type ActionData = {
   action: string;
@@ -28,6 +28,7 @@ export class Kind extends BaseKind<Params> {
 
       await args.denops.call("ddu#pop", name, {
         quit: args.kindParams.quit,
+        sync: true,
       });
       await args.denops.call("ddu#event", name, "close");
 
