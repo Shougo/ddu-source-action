@@ -35,7 +35,7 @@ export class Kind extends BaseKind<Params> {
       for (const item of args.items) {
         const action = item?.action as ActionData;
         await args.denops.call(
-          "ddu#ui_action",
+          "ddu#ui_sync_action",
           action.name,
           "itemAction",
           {
