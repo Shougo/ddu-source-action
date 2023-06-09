@@ -3,8 +3,8 @@ import {
   Context,
   DduItem,
   Item,
-} from "https://deno.land/x/ddu_vim@v2.7.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v2.7.0/deps.ts";
+} from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
 import { ActionData } from "../@ddu-kinds/action.ts";
 
 type Params = {
@@ -22,8 +22,7 @@ export class Source extends BaseSource<Params> {
     sourceParams: Params;
   }): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
-      // deno-lint-ignore require-await
-      async start(controller) {
+      start(controller) {
         controller.enqueue(args.sourceParams.actions.map((action) => {
           return {
             word: action,
@@ -32,7 +31,7 @@ export class Source extends BaseSource<Params> {
               name: args.sourceParams.name,
               items: args.sourceParams.items,
             },
-          }
+          };
         }));
         controller.close();
       },

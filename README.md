@@ -4,9 +4,8 @@ action source for ddu.vim
 
 This source collects actions from items.
 
-Note: It must be called from UI plugin.
-Note: The UI plugin must implement "itemAction" UI action.
-Note: It does not close current UI.
+Note: It must be called from UI plugin. Note: The UI plugin must implement
+"itemAction" UI action. Note: It does not close current UI.
 
 ## Required
 

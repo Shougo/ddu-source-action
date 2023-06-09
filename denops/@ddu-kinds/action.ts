@@ -1,10 +1,10 @@
 import {
-  Actions,
   ActionFlags,
+  Actions,
   BaseKind,
   DduItem,
-} from "https://deno.land/x/ddu_vim@v2.7.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v2.7.0/deps.ts";
+} from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
 
 export type ActionData = {
   action: string;
@@ -20,9 +20,9 @@ export class Kind extends BaseKind<Params> {
   override actions: Actions<Params> = {
     do: async (args: {
       denops: Denops;
-      items: DduItem[],
-      kindParams: Params,
-      actionParams: unknown,
+      items: DduItem[];
+      kindParams: Params;
+      actionParams: unknown;
     }) => {
       const name = (args.items[0].action as ActionData).name;
 
