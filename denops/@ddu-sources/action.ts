@@ -3,8 +3,8 @@ import {
   Context,
   DduItem,
   Item,
-} from "https://deno.land/x/ddu_vim@v3.0.2/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v3.0.2/deps.ts";
+} from "https://deno.land/x/ddu_vim@v3.2.6/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.2.6/deps.ts";
 import { ActionData } from "../@ddu-kinds/action.ts";
 
 type Params = {
