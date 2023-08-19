@@ -3,8 +3,8 @@ import {
   Actions,
   BaseKind,
   DduItem,
-} from "https://deno.land/x/ddu_vim@v3.2.6/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v3.2.6/deps.ts";
+} from "https://deno.land/x/ddu_vim@v3.5.1/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.5.1/deps.ts";
 
 export type ActionData = {
   action: string;
@@ -12,9 +12,7 @@ export type ActionData = {
   items: DduItem[];
 };
 
-type Params = {
-  quit: boolean;
-};
+type Params = Record<string, never>;
 
 export class Kind extends BaseKind<Params> {
   override actions: Actions<Params> = {
@@ -27,7 +25,7 @@ export class Kind extends BaseKind<Params> {
       const name = (args.items[0].action as ActionData).name;
 
       await args.denops.call("ddu#pop", name, {
-        quit: args.kindParams.quit,
+        quit: true,
         sync: true,
       });
       await args.denops.call("ddu#event", name, "close");
@@ -51,8 +49,6 @@ export class Kind extends BaseKind<Params> {
   };
 
   override params(): Params {
-    return {
-      quit: false,
-    };
+    return {};
   }
 }
