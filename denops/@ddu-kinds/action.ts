@@ -25,7 +25,7 @@ export class Kind extends BaseKind<Params> {
       const name = (args.items[0].action as ActionData).name;
 
       await args.denops.call("ddu#pop", name, {
-        quit: true,
+        quit: false,
         sync: true,
       });
       await args.denops.call("ddu#event", name, "close");
