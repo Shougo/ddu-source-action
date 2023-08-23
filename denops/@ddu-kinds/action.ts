@@ -24,11 +24,11 @@ export class Kind extends BaseKind<Params> {
     }) => {
       const name = (args.items[0].action as ActionData).name;
 
-      await args.denops.call("ddu#pop", name, {
+      await args.denops.dispatcher.pop(name, {
         quit: false,
         sync: true,
       });
-      await args.denops.call("ddu#event", name, "close");
+      await args.denops.dispatcher.event(name, "close");
 
       for (const item of args.items) {
         const action = item?.action as ActionData;
