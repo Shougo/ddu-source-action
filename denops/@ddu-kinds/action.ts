@@ -1,10 +1,14 @@
 import {
+  Action,
   ActionFlags,
   Actions,
+  BaseActionParams,
   BaseKind,
   DduItem,
-} from "https://deno.land/x/ddu_vim@v3.5.1/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v3.5.1/deps.ts";
+  DduOptions,
+  Previewer,
+} from "https://deno.land/x/ddu_vim@v3.6.0/types.ts";
+import { Denops } from "https://deno.land/x/ddu_vim@v3.6.0/deps.ts";
 
 export type ActionData = {
   action: string;
@@ -24,7 +28,7 @@ export class Kind extends BaseKind<Params> {
     }) => {
       const name = (args.items[0].action as ActionData).name;
 
-      await args.denops.dispatcher.pop(name, {
+      args.denops.dispatcher.pop(name, {
         quit: false,
         sync: true,
       });
@@ -47,6 +51,28 @@ export class Kind extends BaseKind<Params> {
       return Promise.resolve(ActionFlags.None);
     },
   };
+
+  override async getPreviewer(args: {
+    denops: Denops;
+    options: DduOptions;
+    item: DduItem;
+  }): Promise<Previewer | undefined> {
+    const itemAction = args.item?.action as ActionData;
+    const action = await args.denops.dispatcher.getItemAction(
+      itemAction.name,
+      itemAction.items,
+      itemAction.action,
+    ) as Action<BaseActionParams>;
+
+    if (typeof action != "object" || !action.description) {
+      return undefined;
+    }
+
+    return {
+      kind: "nofile",
+      contents: [action.description],
+    };
+  }
 
   override params(): Params {
     return {};
