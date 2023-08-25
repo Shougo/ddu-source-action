@@ -70,7 +70,7 @@ export class Kind extends BaseKind<Params> {
 
     return {
       kind: "nofile",
-      contents: [action.description],
+      contents: action.description.split("\n"),
     };
   }
 
