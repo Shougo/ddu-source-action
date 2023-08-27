@@ -32,7 +32,6 @@ export class Kind extends BaseKind<Params> {
         quit: false,
         sync: true,
       });
-      await args.denops.dispatcher.event(name, "close");
 
       for (const item of args.items) {
         const action = item?.action as ActionData;
