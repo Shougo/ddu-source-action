@@ -28,7 +28,7 @@ export class Kind extends BaseKind<Params> {
     }) => {
       const name = (args.items[0].action as ActionData).name;
 
-      args.denops.dispatcher.pop(name, {
+      await args.denops.dispatcher.pop(name, {
         quit: false,
         sync: true,
       });
