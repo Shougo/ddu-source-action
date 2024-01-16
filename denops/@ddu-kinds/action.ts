@@ -28,8 +28,9 @@ export class Kind extends BaseKind<Params> {
     }) => {
       const name = (args.items[0].action as ActionData).name;
 
+      // NOTE: It must quit current ddu
       await args.denops.dispatcher.pop(name, {
-        quit: false,
+        quit: true,
         sync: true,
       });
 
