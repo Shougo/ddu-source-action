@@ -53,14 +53,15 @@ actions		(string[])
 
 		Default: []
 
-name		(string)
-		Current ddu name.
-
+                                               *ddu-source-action-param-items*
 items		(DduItem[])
 		Items list.
 
 		Default: []
 
+                                                *ddu-source-action-param-name*
+name		(string)
+		Current ddu name.
 
 ==============================================================================
 KIND ACTIONS                                         *ddu-kind-action-actions*
