@@ -1,14 +1,15 @@
 import {
-  Action,
+  type Action,
   ActionFlags,
-  Actions,
-  BaseActionParams,
+  type Actions,
+  type BaseActionParams,
   BaseKind,
-  DduItem,
-  DduOptions,
-  Previewer,
-} from "https://deno.land/x/ddu_vim@v4.1.0/types.ts";
-import { Denops } from "https://deno.land/x/ddu_vim@v4.1.0/deps.ts";
+  type DduItem,
+  type DduOptions,
+  type Previewer,
+} from "jsr:@shougo/ddu-vim@^5.0.0/types";
+
+import type { Denops } from "jsr:@denops/core@^7.0.0";
 
 export type ActionData = {
   action: string;
