@@ -3,7 +3,7 @@ import {
   type Context,
   type DduItem,
   type Item,
-} from "jsr:@shougo/ddu-vim@^5.0.0/types";
+} from "jsr:@shougo/ddu-vim@^6.0.0/types";
 
 import type { Denops } from "jsr:@denops/core@^7.0.0";
 

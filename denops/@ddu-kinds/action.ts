@@ -2,14 +2,14 @@ import {
   type Action,
   ActionFlags,
   type Actions,
-  type BaseActionParams,
-  BaseKind,
+  type BaseParams,
   type DduItem,
   type DduOptions,
   type Previewer,
-} from "jsr:@shougo/ddu-vim@^5.0.0/types";
+} from "jsr:@shougo/ddu-vim@~6.1.0/types";
+import { BaseKind } from "jsr:@shougo/ddu-vim@~6.1.0/kind";
 
-import type { Denops } from "jsr:@denops/core@^7.0.0";
+import type { Denops } from "jsr:@denops/core@~7.0.0";
 
 export type ActionData = {
   action: string;
@@ -63,7 +63,7 @@ export class Kind extends BaseKind<Params> {
       itemAction.name,
       itemAction.items,
       itemAction.action,
-    ) as Action<BaseActionParams>;
+    ) as Action<BaseParams>;
 
     if (typeof action != "object" || !action.description) {
       return undefined;
