@@ -1,5 +1,5 @@
+import { BaseSource } from "jsr:@shougo/ddu-vim@^6.0.0/source";
 import {
-  BaseSource,
   type Context,
   type DduItem,
   type Item,
