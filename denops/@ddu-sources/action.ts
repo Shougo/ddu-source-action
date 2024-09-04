@@ -1,11 +1,11 @@
 import {
-  BaseSource,
   type Context,
   type DduItem,
   type Item,
-} from "jsr:@shougo/ddu-vim@^6.0.0/types";
+} from "jsr:@shougo/ddu-vim@~6.1.0/types";
+import { BaseSource } from "jsr:@shougo/ddu-vim@~6.1.0/source";
 
-import type { Denops } from "jsr:@denops/core@^7.0.0";
+import type { Denops } from "jsr:@denops/core@~7.0.0";
 
 import { type ActionData } from "../@ddu-kinds/action.ts";
 
