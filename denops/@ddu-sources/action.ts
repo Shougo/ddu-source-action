@@ -1,9 +1,10 @@
 import {
   type Context,
   type DduItem,
+  type DduOptions,
   type Item,
-} from "jsr:@shougo/ddu-vim@~6.1.0/types";
-import { BaseSource } from "jsr:@shougo/ddu-vim@~6.1.0/source";
+} from "jsr:@shougo/ddu-vim@~6.4.0/types";
+import { BaseSource } from "jsr:@shougo/ddu-vim@~6.4.0/source";
 
 import type { Denops } from "jsr:@denops/core@~7.0.0";
 
@@ -16,16 +17,22 @@ type Params = {
 };
 
 export class Source extends BaseSource<Params> {
-  kind = "action";
+  override kind = "action";
 
   override gather(args: {
     denops: Denops;
     context: Context;
+    options: DduOptions;
     sourceParams: Params;
   }): ReadableStream<Item<ActionData>[]> {
     return new ReadableStream({
-      start(controller) {
-        controller.enqueue(args.sourceParams.actions.map((action) => {
+      async start(controller) {
+        const actions = await args.denops.dispatcher.getItemActionNames(
+          args.options.name,
+          args.sourceParams.items,
+        ) as string[];
+
+        controller.enqueue(actions.map((action) => {
           return {
             word: action,
             action: {
