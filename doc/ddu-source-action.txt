@@ -53,6 +53,12 @@ actions		(string[])
 
 		Default: []
 
+                                      *ddu-source-action-param-ignoredActions*
+ignoredActions		(string[])
+		Ignored actions names list.
+
+		Default: []
+
                                                *ddu-source-action-param-items*
 items		(DduItem[])
 		Items list.
