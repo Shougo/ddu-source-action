@@ -6,8 +6,8 @@ import {
   type DduItem,
   type DduOptions,
   type Previewer,
-} from "jsr:@shougo/ddu-vim@~9.0.0/types";
-import { BaseKind } from "jsr:@shougo/ddu-vim@~9.0.0/kind";
+} from "jsr:@shougo/ddu-vim@~10.2.0/types";
+import { BaseKind } from "jsr:@shougo/ddu-vim@~10.2.0/kind";
 
 import type { Denops } from "jsr:@denops/core@~7.0.0";
 
