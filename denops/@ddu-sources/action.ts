@@ -3,8 +3,8 @@ import {
   type DduItem,
   type DduOptions,
   type Item,
-} from "jsr:@shougo/ddu-vim@~10.2.0/types";
-import { BaseSource } from "jsr:@shougo/ddu-vim@~10.2.0/source";
+} from "jsr:@shougo/ddu-vim@~10.3.0/types";
+import { BaseSource } from "jsr:@shougo/ddu-vim@~10.3.0/source";
 
 import { type ActionData } from "../@ddu-kinds/action.ts";
 

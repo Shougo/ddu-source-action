@@ -6,8 +6,8 @@ import {
   type DduItem,
   type DduOptions,
   type Previewer,
-} from "jsr:@shougo/ddu-vim@~10.2.0/types";
-import { BaseKind } from "jsr:@shougo/ddu-vim@~10.2.0/kind";
+} from "jsr:@shougo/ddu-vim@~10.3.0/types";
+import { BaseKind } from "jsr:@shougo/ddu-vim@~10.3.0/kind";
 
 import type { Denops } from "jsr:@denops/core@~7.0.0";
 
@@ -21,35 +21,38 @@ type Params = Record<string, never>;
 
 export class Kind extends BaseKind<Params> {
   override actions: Actions<Params> = {
-    do: async (args: {
-      denops: Denops;
-      items: DduItem[];
-      kindParams: Params;
-      actionParams: unknown;
-    }) => {
-      const name = (args.items[0].action as ActionData).name;
+    do: {
+      description: "Execute the action.",
+      callback: async (args: {
+        denops: Denops;
+        items: DduItem[];
+        kindParams: Params;
+        actionParams: unknown;
+      }) => {
+        const name = (args.items[0].action as ActionData).name;
 
-      // NOTE: It must quit current ddu
-      await args.denops.dispatcher.pop(name, {
-        quit: true,
-        sync: true,
-      });
+        // NOTE: It must quit current ddu
+        await args.denops.dispatcher.pop(name, {
+          quit: true,
+          sync: true,
+        });
 
-      for (const item of args.items) {
-        const action = item?.action as ActionData;
-        await args.denops.call(
-          "ddu#ui_sync_action",
-          action.name,
-          "itemAction",
-          {
-            name: action.action,
-            items: action.items,
-            params: args.actionParams,
-          },
-        );
-      }
+        for (const item of args.items) {
+          const action = item?.action as ActionData;
+          await args.denops.call(
+            "ddu#ui_sync_action",
+            action.name,
+            "itemAction",
+            {
+              name: action.action,
+              items: action.items,
+              params: args.actionParams,
+            },
+          );
+        }
 
-      return Promise.resolve(ActionFlags.None);
+        return Promise.resolve(ActionFlags.None);
+      },
     },
   };
 
