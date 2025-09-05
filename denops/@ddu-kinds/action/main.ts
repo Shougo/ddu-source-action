@@ -6,10 +6,10 @@ import {
   type DduItem,
   type DduOptions,
   type Previewer,
-} from "jsr:@shougo/ddu-vim@~10.3.0/types";
-import { BaseKind } from "jsr:@shougo/ddu-vim@~10.3.0/kind";
+} from "@shougo/ddu-vim/types";
+import { BaseKind } from "@shougo/ddu-vim/kind";
 
-import type { Denops } from "jsr:@denops/core@~7.0.0";
+import type { Denops } from "@denops/std";
 
 export type ActionData = {
   action: string;
