@@ -35,7 +35,7 @@ https://github.com/vim-denops/denops.vim
 
 ==============================================================================
 EXAMPLES                                          *ddu-source-action-examples*
->
+>vim
 	call ddu#custom#patch_global(#{
 	    \   kindOptions: #{
 	    \     action: #{
@@ -43,7 +43,7 @@ EXAMPLES                                          *ddu-source-action-examples*
 	    \     },
 	    \   }
 	    \ })
-
+<
 ==============================================================================
 SOURCE PARAMS                                       *ddu-source-action-params*
 
