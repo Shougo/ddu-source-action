@@ -1,11 +1,11 @@
 import type { Context, DduItem, DduOptions, Item } from "@shougo/ddu-vim/types";
 import { BaseSource } from "@shougo/ddu-vim/source";
 
-import { type ActionData } from "../../@ddu-kinds/action/main.ts";
+import type { ActionData } from "../../@ddu-kinds/action/main.ts";
 
-import type { Denops } from "jsr:@denops/core@~7.0.0";
+import type { Denops } from "@denops/std";
 
-import { is } from "jsr:@core/unknownutil@~4.3.0/is";
+import { is } from "@core/unknownutil/is";
 
 type Params = {
   actions: string[];
