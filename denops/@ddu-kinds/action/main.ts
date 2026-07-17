@@ -29,16 +29,29 @@ export class Kind extends BaseKind<Params> {
         kindParams: Params;
         actionParams: unknown;
       }) => {
-        const name = (args.items[0].action as ActionData).name;
+        if (args.items.length === 0) {
+          return ActionFlags.None;
+        }
+
+        const firstAction = args.items[0]?.action as
+          | Partial<ActionData>
+          | undefined;
+        if (!firstAction?.name) {
+          return ActionFlags.None;
+        }
 
         // NOTE: It must quit current ddu
-        await args.denops.dispatcher.pop(name, {
+        await args.denops.dispatcher.pop(firstAction.name, {
           quit: true,
           sync: true,
         });
 
         for (const item of args.items) {
-          const action = item?.action as ActionData;
+          const action = item?.action as Partial<ActionData> | undefined;
+          if (!action?.name || !action.action || !action.items) {
+            continue;
+          }
+
           await args.denops.call(
             "ddu#ui_sync_action",
             action.name,
@@ -51,7 +64,7 @@ export class Kind extends BaseKind<Params> {
           );
         }
 
-        return Promise.resolve(ActionFlags.None);
+        return ActionFlags.None;
       },
     },
   };
@@ -61,24 +74,52 @@ export class Kind extends BaseKind<Params> {
     options: DduOptions;
     item: DduItem;
   }): Promise<Previewer | undefined> {
-    const itemAction = args.item?.action as ActionData;
+    const itemAction = getItemActionData(args.item);
+    if (!itemAction) {
+      return undefined;
+    }
+
     const action = await args.denops.dispatcher.getItemAction(
       itemAction.name,
       itemAction.items,
       itemAction.action,
-    ) as Action<BaseParams>;
+    ) as Action<BaseParams> | undefined;
 
-    if (typeof action != "object" || !action.description) {
+    const description = getActionDescription(action);
+    if (!description) {
       return undefined;
     }
 
     return {
       kind: "nofile",
-      contents: action.description.split("\n"),
+      contents: description.split("\n"),
     };
   }
 
   override params(): Params {
     return {};
   }
+}
+
+function getActionDescription(
+  action: Action<BaseParams> | undefined,
+): string | undefined {
+  if (!action || typeof action !== "object") {
+    return undefined;
+  }
+
+  if (!action.description) {
+    return undefined;
+  }
+
+  return action.description;
+}
+
+function getItemActionData(item: DduItem): ActionData | undefined {
+  const action = item?.action as Partial<ActionData> | undefined;
+  if (!action?.name || !action.action || !action.items) {
+    return undefined;
+  }
+
+  return action as ActionData;
 }
